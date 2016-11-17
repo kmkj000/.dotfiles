@@ -21,7 +21,7 @@ elif type"curl" > /dev/null 2>&1 || type "wget" > /dev/null 2>&1; then
     fi | tar xvz 
 
     # 解凍したら，DOTPATH に置く
-    mv -f dotfiles-master "$DOTPATH"
+    mv -f .dotfiles-master "$DOTPATH"
 
     echo "Download Complete"
 
