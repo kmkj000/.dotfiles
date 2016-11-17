@@ -9,3 +9,5 @@ deploy:
 init:
 	    @$(foreach val, $(wildcard ./etc/init/*.sh), bash $(val);)
 
+#remove:
+#		@$(foreach val, $(DOTFILES_FILES), rm -rf $(
