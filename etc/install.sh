@@ -1,7 +1,7 @@
 #...
 
 DOTPATH=~/.dotfiles
-GITHUB_URL=git@github.com:kmkj000/dotfiles.git
+GITHUB_URL=git@github.com:kmkj000/.dotfiles.git
 
 # git が使えるなら git
 if type "git" > /dev/null 2>&1; then
