@@ -36,5 +36,5 @@ if [ $? -ne 0 ]; then
 fi
 
 # 移動できたらリンクを実行する
-make deploy
+make
 
