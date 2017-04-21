@@ -1,4 +1,4 @@
-#...
+#!/bin/bssh
 
 DOTPATH=~/.dotfiles
 GITHUB_URL=https://github.com/kmkj000/.dotfiles.git
@@ -36,5 +36,15 @@ if [ $? -ne 0 ]; then
 fi
 
 # 移動できたらリンクを実行する
-make
+## makeが使える場合
+#if type "make" > /dev/null 2>&1; then
+#make
+#fi
 
+
+
+DOT_FILES=(.bash_profile .vimrc .vim .local .tmux.conf)
+for file in ${DOT_FILES[@]}
+do
+     ln -sf $DOTPATH/$file $HOME/$file
+done
