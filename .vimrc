@@ -3,7 +3,7 @@ colorscheme molokai
 set background=dark
 set t_Co=256
 syntax on   "シンタックスカラーリングを設定する
-set number    "行番号を表示する
+set number "行番号を表示する
 set cursorline
 set title    "編集中のファイル名を表示する
 set showcmd    "入力中のコマンドを表示する
@@ -72,3 +72,8 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+"lightline----------------------------------------
+if filereadable(expand('~/.vim/lightline.vimrc'))
+  source ~/.vim/lightline.vimrc
+endif
