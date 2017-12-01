@@ -30,7 +30,10 @@ set autoindent
 set expandtab
 set shiftwidth=4
 
-
+"encoding-------------
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
 
 "dein.vim設定--------------------------------------------
 " プラグインが実際にインストールされるディレクトリ
