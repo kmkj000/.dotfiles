@@ -1,0 +1,12 @@
+#!/bin/bash
+
+current_version=$(tmux -V | awk '{print $2}')
+need_version=$1
+result_code=0
+#低いバージョンのみ有効にする場合(-r 2.2等)
+if [ "$1" = "-r" ]; then
+    need_version=$2
+    result_code=1
+fi
+
+[[ $(echo "$current_version >= $need_version" | bc) != ${result_code} ]]

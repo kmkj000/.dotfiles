@@ -1,5 +1,6 @@
-# valiable --------------------------
-export TERM=screen-256color-bce
+# valiable -------------------------
+export PATH="${PATH}:~/.dotfiles/bin"
+export TERM="screen-256color-bce"
 export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;33m\][\d]\[\e[00m\]\[\e[1;33m\][\t]\[\e[00m\]\[\e[1;31m\][\w]\[\e[00m\]\n\$ "
 
 #OSによってlsの色付けオプションを変える
