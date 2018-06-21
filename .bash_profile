@@ -16,3 +16,9 @@ esac
 # alias ----------------------------
 #gitlogでグラフ付きのgit logを実行
 alias gitlog="git log --graph"
+
+
+#.bashrc
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
