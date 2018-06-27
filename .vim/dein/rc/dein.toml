@@ -1,6 +1,13 @@
 # 基本は github.com のレポジトリーを指定するだけ
 [[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
 repo = 'itchyny/lightline.vim'
+
+# slimシンタックスハイライト
+[[plugins]]
+repo = 'slim-template/vim-slim'
 
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]

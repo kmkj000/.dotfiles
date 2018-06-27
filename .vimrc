@@ -26,11 +26,19 @@ filetype plugin on
 filetype indent on
 
 " スペース2個
-set expandtab
 set tabstop=2
 set shiftwidth=2
+set softtabstop=2
 
+" tabはスペース入力
+set expandtab
+"自動インデント
 set autoindent
+set smartindent
+
+if filereadable(expand('~/.vim/fileindent.vimrc'))
+  source ~/.vim/fileindent.vimrc
+endif
 
 "encoding-------------
 set encoding=utf-8
