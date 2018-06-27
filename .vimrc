@@ -25,14 +25,16 @@ filetype on
 filetype plugin on
 filetype indent on
 
-set tabstop=4
-set autoindent
+" スペース2個
 set expandtab
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+
+set autoindent
 
 "encoding-------------
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 
 "dein.vim設定--------------------------------------------
