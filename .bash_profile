@@ -16,7 +16,6 @@ case "${OSTYPE}" in
 esac
 
 # alias ----------------------------
-#gitlogでグラフ付きのgit logを実行
 alias gitlog="git log --graph"
 
 
