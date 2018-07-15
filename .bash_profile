@@ -5,19 +5,10 @@ if [ -f ~/.bash_powerline ]; then
   source ~/.bash_powerline
 fi
 
-#OSによってlsの引数を変更
-case "${OSTYPE}" in
-    darwin*)
-        alias ls="ls -G"
-        ;;
-    linux*)
-        alias ls="ls --color=auto"
-        ;;
-esac
-
 # alias ----------------------------
-alias gitlog="git log --graph"
-
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 #.bashrc
 if [ -f ~/.bashrc ]; then

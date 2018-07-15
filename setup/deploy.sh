@@ -19,4 +19,5 @@ find ~/.dotfiles -maxdepth 1 -name ".*" -not -name ".git" -not -name ".dotfiles"
 #     ln -sf $DOTPATH/$file $HOME/$file
 #done
 
+. ~/.bash_profile
 echo "complete deploy!"
