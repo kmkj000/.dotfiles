@@ -9,6 +9,9 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'slim-template/vim-slim'
 
+[[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
