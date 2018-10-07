@@ -4,6 +4,11 @@ export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;3
 if [ -f ~/.bash_powerline ]; then
   source ~/.bash_powerline
 fi
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+  xterm-color|*-256color) color_prompt=yes;;
+esac
+
 
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
