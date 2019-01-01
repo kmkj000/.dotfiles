@@ -12,6 +12,9 @@ set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
 set matchtime=3 "showmatchの表示時間
 set laststatus=2    "ステータスラインを常に表示する
 
+set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+set hls                "検索した文字をハイライトする
+
 set wildmenu wildmode=list:full "補完機能を有効にする
 
 " [Backspace] で既存の文字を削除できるように設定
@@ -21,9 +24,6 @@ set wildmenu wildmode=list:full "補完機能を有効にする
 set backspace=start,eol,indent
 
 set noswapfile
-filetype on
-filetype plugin on
-filetype indent on
 
 " スペース2個
 set tabstop=2
@@ -63,6 +63,17 @@ endif
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
+  " deoplete導入
+  if ((has('nvim')  || has('timers')) && has('python3')) && system('pip3 show neovim') !=# ''
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+  elseif has('lua')
+    call dein#add('Shougo/neocomplete.vim')
+  endif
+
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイル（後述）を用意しておく
   let g:rc_dir    = expand('~/.vim/dein/rc')
@@ -78,15 +89,18 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
+" deoplate用の設定
+if dein#tap('deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+elseif dein#tap('neocomplete.vim')
+  let g:neocomplete#enable_at_startup = 1
+endif
+
 " もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
 
-filetype plugin indent on
-syntax enable
-
-"lightline----------------------------------------
-if filereadable(expand('~/.vim/lightline.vimrc'))
-  source ~/.vim/lightline.vimrc
-endif
+filetype on
+filetype plugin on
+filetype indent on
