@@ -1,14 +1,17 @@
 # valiable -------------------------
-export PATH="${PATH}:~/.dotfiles/bin"
+export PATH="${HOME}/.dotfiles/bin:${PATH}"
 export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;33m\][\d]\[\e[00m\]\[\e[1;33m\][\t]\[\e[00m\]\[\e[1;31m\][\w]\[\e[00m\]\n\$ "
 if [ -f ~/.bash_powerline ]; then
   source ~/.bash_powerline
 fi
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
+case "${TERM}" in
   xterm-color|*-256color) color_prompt=yes;;
 esac
 
+# *env -----------------------------
+export PATH="${HOME}/.anyenv/bin:${PATH}"
+eval "$(anyenv init -)"
 
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
