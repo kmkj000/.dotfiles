@@ -17,6 +17,20 @@ repo = 'ConradIrwin/vim-bracketed-paste'
 repo = 'othree/yajs.vim'
 on_ft = ['javascript', 'js']
 
+# Go Plugins
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = ['go']
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'
+depends = ['deoplete.nvim']
+hook_source = '''
+    let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
+'''
+
 # 特定のファイルタイプで読み込む
 [[plugins]]
 repo  = 'Quramy/tsuquyomi'
