@@ -1,1 +1,1 @@
-/home/puti/.vimrc
+../.vimrc
