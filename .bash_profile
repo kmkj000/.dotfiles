@@ -8,8 +8,9 @@ fi
 case "${TERM}" in
   xterm-color|*-256color) color_prompt=yes;;
 esac
+export GOPATH="$HOME/.go"
 
-# *env -----------------------------
+# **env -----------------------------
 export PATH="${HOME}/.anyenv/bin:${PATH}"
 eval "$(anyenv init -)"
 
