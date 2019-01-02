@@ -1,4 +1,4 @@
-"Display
+"Display -----------------------------
 colorscheme molokai 
 set background=dark
 set t_Co=256
@@ -29,18 +29,13 @@ set noswapfile
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-
 " tabはスペース入力
 set expandtab
 "自動インデント
 set autoindent
 set smartindent
 
-if filereadable(expand('~/.vim/fileindent.vimrc'))
-  source ~/.vim/fileindent.vimrc
-endif
-
-"encoding-------------
+"encoding------------------------------------------------
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
