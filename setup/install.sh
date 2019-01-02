@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DOTPATH=~/.dotfiles
 GITHUB_URL=https://github.com/kmkj000/.dotfiles.git

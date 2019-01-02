@@ -25,7 +25,7 @@ alias gs='git status'
 alias be='bundle exec'
 
 # vi --------------------------
-if type nvim > /dev/null; then
+if type nvim > /dev/null 2>&1; then
   alias vi='nvim'
   alias vim='nvim'
 fi
