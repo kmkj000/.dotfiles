@@ -12,7 +12,7 @@ set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
 set matchtime=3 "showmatchの表示時間
 set laststatus=2    "ステータスラインを常に表示する
 
-set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+"set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 set hls                "検索した文字をハイライトする
 
 set wildmenu wildmode=list:full "補完機能を有効にする
@@ -79,22 +79,23 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
+  " deoplate用の設定
+  if dein#tap('deoplete.nvim')
+    let g:deoplete#enable_at_startup = 1
+  elseif dein#tap('neocomplete.vim')
+    let g:neocomplete#enable_at_startup = 1
+  endif
+
   " 設定終了
   call dein#end()
   call dein#save_state()
-endif
-
-" deoplate用の設定
-if dein#tap('deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
-elseif dein#tap('neocomplete.vim')
-  let g:neocomplete#enable_at_startup = 1
 endif
 
 " もし、未インストールものものがあったらインストール
 if dein#check_install()
   call dein#install()
 endif
+
 
 filetype on
 filetype plugin on
