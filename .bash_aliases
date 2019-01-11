@@ -20,6 +20,7 @@ alias mv='mv -i'
 # git -------------------------
 alias gitlog='git log --graph'
 alias gs='git status'
+alias grecommit='git commit --amend --no-edit'
 
 # ruby ------------------------
 alias be='bundle exec'
