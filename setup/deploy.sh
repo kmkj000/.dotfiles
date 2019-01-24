@@ -16,10 +16,10 @@ cd ~/
 find ~/.dotfiles -maxdepth 1 -name ".*" -not -name ".git" -not -name ".dotfiles" | xargs -n 1 ln -sf
 
 if [[ -e ${HOME}/.config ]]; then
-  ln -s ${HOME}/.vim ${HOME}/.config/nvim
+  ln -sf ${HOME}/.vim ${HOME}/.config/nvim
 else
   mkdir -v ${HOME}/.config
-  ln -s ${HOME}/.vim ${HOME}/.config/nvim
+  ln -sf ${HOME}/.vim ${HOME}/.config/nvim
 fi
 
 #DOT_FILES=(.bash_profile .vimrc .vim .local .tmux.conf)
