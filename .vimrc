@@ -1,29 +1,71 @@
-"Display -----------------------------
-colorscheme molokai 
-set background=dark
-set t_Co=256
-syntax on   "シンタックスカラーリングを設定する
-set number "行番号を表示する
-set cursorline
-set title    "編集中のファイル名を表示する
-set showcmd    "入力中のコマンドを表示する
-set ruler    "座標を表示する
-set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
+"Base Settings -----------------------
+"encoding-------------------
+"文字コードをUFT-8に設定
+set fenc=utf-8
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac " バックアップファイルを作らない
+set nobackup " スワップファイルを作らない
+set noswapfile " 編集中のファイルが変更されたら自動で読み直す
+set autoread " バッファが編集中でもその他のファイルを開けるように
+set hidden  " 入力中のコマンドをステータスに表示する
 set matchtime=3 "showmatchの表示時間
 set laststatus=2    "ステータスラインを常に表示する
-
-"set clipboard=unnamed  "yank した文字列をクリップボードにコピー
-set hls                "検索した文字をハイライトする
-
+set pumheight=10 " 補完メニューの高さ
 set wildmenu wildmode=list:full "補完機能を有効にする
-
+"ESC連打でハイライト解除
+nmap <Esc><Esc> :nohlsearch<CR><Esc>  
+set smartcase " 検索文字列に大文字が含まれている場合は区別して検索する
+set incsearch " 検索文字列入力時に順次対象文字列にヒットさせる
+" Y を、行末までのヤンクにする
+nnoremap Y y$
+" 括弧補完
+inoremap { {}<LEFT>
+inoremap ( ()<LEFT>
+inoremap < <><LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap [ []<LEFT>
 " [Backspace] で既存の文字を削除できるように設定
 "  start - 既存の文字を削除できるように設定
 "  eol - 行頭で[Backspace]を使用した場合上の行と連結
 "  indent - オートインデントモードでインデントを削除できるように設定
 set backspace=start,eol,indent
 
-set noswapfile
+"set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+let g:python_host_prog  = '~/.anyenv/envs/pyenv/shims/python2'
+let g:python3_host_prog = '~/.anyenv/envs/pyenv/shims/python3'
+"Display -----------------------------
+syntax on   "シンタックスカラーリングを設定する
+colorscheme onedark
+set background=dark
+set t_Co=256
+set number "行番号を表示する
+set cursorline
+set title    "編集中のファイル名を表示する
+set showcmd    "入力中のコマンドを表示する
+set ruler    "座標を表示する
+set showcmd "入力したコマンドを表示する
+set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
+set hls                "検索した文字をハイライトする
 
 " スペース2個
 set tabstop=2
@@ -35,10 +77,6 @@ set expandtab
 set autoindent
 set smartindent
 
-"encoding------------------------------------------------
-set encoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-set fileformats=unix,dos,mac
 
 "dein.vim設定--------------------------------------------
 " プラグインが実際にインストールされるディレクトリ
