@@ -2,9 +2,14 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# ColorSchema
-[[plugins]]
-repo = 'itchyny/lightline.vim'
+# Status Line
+#[[plugins]]
+#repo = 'itchyny/lightline.vim'
+#hook_add = '''
+#  let g:lightline = {
+#    \ 'colorscheme': g:colors_name,
+#    \ }
+#'''
 
 # paste noindent
 [[plugins]]
@@ -36,11 +41,15 @@ rev  = 'colorize-template-strings'
 repo = 'elzr/vim-json'
 if   = '''! has('kaoriya')'''
 
+# Status Line
 # 依存関係を指定したいとき
-#[[plugins]]
-#repo    = 'vim-airline/vim-airline'
-#depends = ['vim-airline-themes']
-
+[[plugins]]
+repo    = 'vim-airline/vim-airline'
+hook_add = '''
+  " let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+'''
+depends = ['vim-airline-themes']
 # 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
