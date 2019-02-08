@@ -51,8 +51,8 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
-let g:python_host_prog  = '~/.anyenv/envs/pyenv/shims/python2'
-let g:python3_host_prog = '~/.anyenv/envs/pyenv/shims/python3'
+let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
+let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
 "Display -----------------------------
 syntax on   "シンタックスカラーリングを設定する
 colorscheme onedark
