@@ -19,6 +19,10 @@ repo = 'fatih/vim-go'
 on_ft = ['go']
 
 [[plugins]]
+repo = 'rhysd/vim-crystal'
+on_ft =['cr']
+
+[[plugins]]
 repo = 'zchee/deoplete-go'
 build = 'make'
 on_ft = 'go'

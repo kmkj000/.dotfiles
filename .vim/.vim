@@ -1,1 +1,1 @@
-/Users/JG20005/.vim
+/home/puti/.vim
