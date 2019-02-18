@@ -3,6 +3,7 @@
 cd ~/.dotfiles
 if [ $? -ne 0 ]; then
     echo  "not found: $DOTPATH"
+    return 1
 fi
 
 # 移動できたらリンクを実行する
@@ -13,14 +14,15 @@ fi
 
 #シンボリックリンクをはる
 cd ~/
-find ~/.dotfiles -maxdepth 1 -name ".*" -not -name ".git" -not -name ".dotfiles" | xargs -n 1 ln -sf
 
-if [[ -e ${HOME}/.config ]]; then
-  ln -sf ${HOME}/.vim ${HOME}/.config/nvim
-else
+# nvim用のシンボリックリンクを張る
+if [[ ! -e ${HOME}/.config/nvim ]]; then
   mkdir -v ${HOME}/.config
   ln -sf ${HOME}/.vim ${HOME}/.config/nvim
 fi
+
+find ~/.dotfiles -maxdepth 1 -name ".*" -not -name ".git" -not -name ".dotfiles" | xargs -n 1 ln -sf
+
 
 #DOT_FILES=(.bash_profile .vimrc .vim .local .tmux.conf)
 #for file in ${DOT_FILES[@]}
