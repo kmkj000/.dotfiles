@@ -17,6 +17,11 @@ alias ..='cd ..'
 #上書き対策
 alias mv='mv -i'
 
+# tree
+if [ ! `type tree > /dev/null 2>&1` ]; then
+  alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
+fi
+
 # git -------------------------
 alias gitlog='git log --graph'
 alias gs='git status'
