@@ -18,10 +18,22 @@ on_ft = ['javascript', 'js']
 repo = 'fatih/vim-go'
 on_ft = ['go']
 
+# markdown 
+[[plugins]]
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['md', 'markdown']
+
+# toml Syntax
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# crystal
 [[plugins]]
 repo = 'rhysd/vim-crystal'
 on_ft =['cr']
 
+# deoplete-go
 [[plugins]]
 repo = 'zchee/deoplete-go'
 build = 'make'
@@ -31,15 +43,10 @@ hook_source = '''
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
 '''
 
-# toml Syntax
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
 # インサートモードに入ったら読み込む
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-on_i = 1
+#[[plugins]]
+#repo = 'Shougo/neocomplete.vim'
+#on_i = 1
 
 [[plugins]]
 repo   = 'Shougo/unite.vim'
@@ -53,6 +60,14 @@ on_source = ['unite.vim']
 [[plugins]]
 repo      = 'thinca/vim-prettyprint'
 on_cmd    = ['PP', 'PrettyPrint']
+
+
+[[plugins]]
+repo  = 'Shougo/neosnippet'
+
+[[plugins]]
+repo  = 'Shougo/neosnippet-snippets'
+on_source = ['Shougo/neosnippet']
 
 # 特定のマッピングを使ったら読み込む
 # 又、gvim でしか利用しない
