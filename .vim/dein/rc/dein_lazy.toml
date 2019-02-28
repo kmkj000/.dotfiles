@@ -26,18 +26,18 @@ on_ft = ['md', 'markdown']
 # toml Syntax
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = 'toml'
+on_ft = ['toml']
 
 # crystal
 [[plugins]]
 repo = 'rhysd/vim-crystal'
-on_ft =['cr']
+on_ft =['cr', 'crystal']
 
 # deoplete-go
 [[plugins]]
 repo = 'zchee/deoplete-go'
 build = 'make'
-on_ft = 'go'
+on_ft = ['go']
 depends = ['deoplete.nvim']
 hook_source = '''
     let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
