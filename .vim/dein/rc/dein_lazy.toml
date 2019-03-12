@@ -20,7 +20,7 @@ on_ft = ['go']
 
 # markdown 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
+repo = 'gabrielelana/vim-markdown'
 on_ft = ['md', 'markdown']
 
 # toml Syntax

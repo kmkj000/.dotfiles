@@ -11,9 +11,32 @@ repo = 'Shougo/dein.vim'
 #    \ }
 #'''
 
+# Status Line
+# 依存関係を指定したいとき
+[[plugins]]
+repo    = 'vim-airline/vim-airline'
+hook_add = '''
+  " let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#enabled = 1
+'''
+depends = ['vim-airline-themes']
+
+# 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
 # paste noindent
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+  let g:indentLine_char = '¦'
+'''
 
 # git clone 後、実行すべきコマンドがある場合はこんな感じ
 [[plugins]]
@@ -31,6 +54,10 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+# vim +- disp
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 # ブランチやタグを指定したいとき
 [[plugins]]
 repo = 'delphinus35/typescript-vim'
@@ -41,15 +68,3 @@ rev  = 'colorize-template-strings'
 repo = 'elzr/vim-json'
 if   = '''! has('kaoriya')'''
 
-# Status Line
-# 依存関係を指定したいとき
-[[plugins]]
-repo    = 'vim-airline/vim-airline'
-hook_add = '''
-  " let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-'''
-depends = ['vim-airline-themes']
-# 依存関係を指定したからと言って、自動でインストールはされない（ここは NeoBundle と違う）
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
