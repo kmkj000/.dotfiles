@@ -20,12 +20,12 @@ set incsearch " 検索文字列入力時に順次対象文字列にヒットさ�
 " Y を、行末までのヤンクにする
 nnoremap Y y$
 " 括弧補完
-inoremap { {}<LEFT>
-inoremap ( ()<LEFT>
-inoremap < <><LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-inoremap [ []<LEFT>
+"inoremap { {}<LEFT>
+"inoremap ( ()<LEFT>
+"inoremap < <><LEFT>
+"inoremap <LEFT>
+"inoremap ' ''<LEFT>
+"inoremap [ []<LEFT>
 " [Backspace] で既存の文字を削除できるように設定
 "  start - 既存の文字を削除できるように設定
 "  eol - 行頭で[Backspace]を使用した場合上の行と連結
