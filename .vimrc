@@ -26,6 +26,7 @@ nnoremap Y y$
 "inoremap <LEFT>
 "inoremap ' ''<LEFT>
 "inoremap [ []<LEFT>
+
 " [Backspace] で既存の文字を削除できるように設定
 "  start - 既存の文字を削除できるように設定
 "  eol - 行頭で[Backspace]を使用した場合上の行と連結
