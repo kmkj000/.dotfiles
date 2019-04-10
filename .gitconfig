@@ -1,0 +1,25 @@
+[core]
+  autocrlf = false
+  pager = less -r
+  editor = vim
+  precomposeunicode = true
+  # 文字化け
+  quotepath = false
+
+[merge]
+  ff = false
+[pull]
+  ff = only
+[push]
+  default = current
+
+[color]
+  ui = auto
+
+[alias]
+  # いい感じのグラフでログを表示
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+  # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
+  statuss = status -uno
+  # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
+  difff = diff --word-diff
