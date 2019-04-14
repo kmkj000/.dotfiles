@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -eu
+
+current_version=$(vim --version | head -n 1 | awk '{print $5}')
+echo $current_version
+if [ -z "$current_version" ]; then
+  echo "exit"
+  exit 0
+fi
+need_version=$1
+result_code=0
+
+if [ "$1" = "-r" ]; then
+    need_version=$2
+    result_code=1
+fi
+
+[[ $(echo "$current_version >= $need_version" | bc) != ${result_code} ]]
