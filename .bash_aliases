@@ -35,3 +35,7 @@ if type nvim > /dev/null 2>&1; then
   alias vi='nvim'
   alias vim='nvim'
 fi
+
+# tmux ------------------------
+# color = 256
+alias tmux='tmux -2'
