@@ -1,5 +1,5 @@
 [core]
-  autocrlf = false
+  autocrlf = input
   pager = less -r
   editor = vim
   precomposeunicode = true
