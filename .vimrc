@@ -60,7 +60,6 @@ colorscheme onedark
 set background=dark
 set t_Co=256
 set number "行番号を表示する
-set cursorline
 set title    "編集中のファイル名を表示する
 set showcmd    "入力中のコマンドを表示する
 set ruler    "座標を表示する
