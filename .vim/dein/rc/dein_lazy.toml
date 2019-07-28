@@ -1,37 +1,37 @@
+# Lang syntax highlight ------------------
 # slimシンタックスハイライト
 [[plugins]]
 repo = 'slim-template/vim-slim'
 on_ft = ['slim']
-
 # typescript
 [[plugins]]
 repo  = 'Quramy/tsuquyomi'
 on_ft = ['typescript']
-
 # js
 [[plugins]]
 repo = 'othree/yajs.vim'
 on_ft = ['javascript', 'js']
-
 # Go Plugins
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
-
 # markdown 
 [[plugins]]
 repo = 'gabrielelana/vim-markdown'
 on_ft = ['md', 'markdown']
-
 # toml Syntax
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
-
 # crystal
 [[plugins]]
 repo = 'rhysd/vim-crystal'
 on_ft =['cr', 'crystal']
+# 特定の条件で読み込みたいとき
+[[plugins]]
+repo = 'elzr/vim-json'
+if   = '''! has('kaoriya')'''
+on_ft =['json']
 
 # deoplete-go
 [[plugins]]
@@ -48,6 +48,11 @@ hook_source = '''
 #repo = 'Shougo/neocomplete.vim'
 #on_i = 1
 
+# vim diff +- disp
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# Tools Interface
 [[plugins]]
 repo   = 'Shougo/unite.vim'
 
@@ -71,8 +76,8 @@ on_source = ['Shougo/neosnippet']
 
 # 特定のマッピングを使ったら読み込む
 # 又、gvim でしか利用しない
-[[plugins]]
-repo   = 'thinca/vim-fontzoom'
-on_cmd = ['Fontzoom']
-on_map = ['<Plug>(fontzoom-']
-gui    = 1
+#[[plugins]]
+#repo   = 'thinca/vim-fontzoom'
+#on_cmd = ['Fontzoom']
+#on_map = ['<Plug>(fontzoom-']
+#gui    = 1
