@@ -10,7 +10,6 @@ set noswapfile " 編集中のファイルが変更されたら自動で読み直
 set autoread " バッファが編集中でもその他のファイルを開けるように
 set hidden  " 入力中のコマンドをステータスに表示する
 set matchtime=3 "showmatchの表示時間
-set laststatus=2    "ステータスラインを常に表示する
 set pumheight=10 " 補完メニューの高さ
 set wildmenu wildmode=list:full "補完機能を有効にする
 "ESC連打でハイライト解除
@@ -19,13 +18,6 @@ set smartcase " 検索文字列に大文字が含まれている場合は区別�
 set incsearch " 検索文字列入力時に順次対象文字列にヒットさせる
 " Y を、行末までのヤンクにする
 nnoremap Y y$
-" 括弧補完
-"inoremap { {}<LEFT>
-"inoremap ( ()<LEFT>
-"inoremap < <><LEFT>
-"inoremap <LEFT>
-"inoremap ' ''<LEFT>
-"inoremap [ []<LEFT>
 
 " [Backspace] で既存の文字を削除できるように設定
 "  start - 既存の文字を削除できるように設定
@@ -35,26 +27,30 @@ set backspace=start,eol,indent
 
 "set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
 let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
 let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
+
 "Display -----------------------------
+" Status Line - - -
+" ファイル名表示
+set statusline=%F
+" 変更チェック表示
+set statusline+=%m
+" 読み込み専用かどうか表示
+set statusline+=%r
+" ヘルプページなら[HELP]と表示
+set statusline+=%h
+" プレビューウインドウなら[Prevew]と表示
+set statusline+=%w
+" これ以降は右寄せ表示
+set statusline+=%=
+" file encoding
+set statusline+=[ENC=%{&fileencoding}]
+" 現在行数/全行数
+set statusline+=[LOW=%l/%L]
+" ステータスラインを常に表示(0:表示しない、1:2つ以上ウィンドウがある時だけ表示)
+set laststatus=2
+
 syntax on   "シンタックスカラーリングを設定する
 colorscheme onedark
 set background=dark
@@ -65,7 +61,7 @@ set showcmd    "入力中のコマンドを表示する
 set ruler    "座標を表示する
 set showcmd "入力したコマンドを表示する
 set showmatch   "閉じ括弧の入力時に対応する括弧を表示する
-set hls                "検索した文字をハイライトする
+set hls      "検索した文字をハイライトする
 
 " スペース2個
 set tabstop=2
