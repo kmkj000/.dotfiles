@@ -1,34 +1,49 @@
 "Base Settings -----------------------
-"encoding-------------------
+"Encoding - - -
 "文字コードをUFT-8に設定
 set fenc=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-set fileformats=unix,dos,mac " バックアップファイルを作らない
-set nobackup " スワップファイルを作らない
-set noswapfile " 編集中のファイルが変更されたら自動で読み直す
-set autoread " バッファが編集中でもその他のファイルを開けるように
-set hidden  " 入力中のコマンドをステータスに表示する
+set fileformats=unix,dos,mac 
+
+"File process - - -
+set confirm    " 保存されていないファイルがあるときは終了前に保存確認
+set hidden     " 保存されていないファイルがあるときでも別のファイルを開くことが出来る
+set autoread   "外部でファイルに変更がされた場合は読みなおす
+set nobackup   " ファイル保存時にバックアップファイルを作らない
+set noswapfile " ファイル編集中にスワップファイルを作らない
+
 set matchtime=3 "showmatchの表示時間
 set pumheight=10 " 補完メニューの高さ
 set wildmenu wildmode=list:full "補完機能を有効にする
 "ESC連打でハイライト解除
-nmap <Esc><Esc> :nohlsearch<CR><Esc>  
+nmap <Esc><Esc> :nohlsearch<CR><Esc> 
 set smartcase " 検索文字列に大文字が含まれている場合は区別して検索する
 set incsearch " 検索文字列入力時に順次対象文字列にヒットさせる
 " Y を、行末までのヤンクにする
-nnoremap Y y$
+nmap Y y$
 
-" [Backspace] で既存の文字を削除できるように設定
+" [Backspace] の制限をなくす
 "  start - 既存の文字を削除できるように設定
 "  eol - 行頭で[Backspace]を使用した場合上の行と連結
 "  indent - オートインデントモードでインデントを削除できるように設定
 set backspace=start,eol,indent
 
+"Sound Setting - - -
+"ビープ音すべてを無効にする
+set visualbell t_vb=
+set noerrorbells "エラーメッセージの表示時にビープを鳴らさない
+
+"Environment - - -
+set clipboard=unnamed,unnamedplus " OSのクリップボードをレジスタ指定無しで Yank, Put 出来るようにする
+set mouse=a " マウスの入力を受け付ける
+set shellslash " Windows でもパスの区切り文字を / にする
 "set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 
+" pyenvでneovim用に作成したpythonのpath
 let g:python_host_prog=$PYENV_ROOT.'/versions/neovim-2/bin/python'
 let g:python3_host_prog=$PYENV_ROOT.'/versions/neovim-3/bin/python'
+
 
 "Display -----------------------------
 " Status Line - - -
