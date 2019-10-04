@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ type -a /usr/bin/pmset > /dev/null 2>&1 ]; then
+if [ ! type -a /usr/bin/pmset > /dev/null 2>&1 ]; then
   battery="#[bg=cyan,fg=black]⚡#[default]"
   echo $battery
   exit 0
