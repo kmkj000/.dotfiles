@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 current_version=$(tmux -V | awk '{print $2}')
 need_version=$1
