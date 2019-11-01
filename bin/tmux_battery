@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [[ ! $(type -a pmset > /dev/null 2>&1) ]]; then
+if ! type -a pmset > /dev/null 2>&1; then
   battery="#[bg=cyan,fg=black]\U26a1#[default]"
   echo -e $battery
   exit 0
