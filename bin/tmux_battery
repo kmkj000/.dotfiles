@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
+HIGH_VOLTAGE=⚡
 if ! type -a pmset > /dev/null 2>&1; then
-  battery="#[bg=cyan,fg=black]\U26a1#[default]"
+  battery="#[bg=cyan,fg=black]${HIGH_VOLTAGE}#[default]"
   echo -e $battery
   exit 0
 fi
 if battery_info=$(pmset -g ps | awk '{ if (NR == 2) print $3 " " $4 }' | sed -e "s/;//g" -e "s/%//") ; then
   battery_quantity=$(echo $battery_info | awk '{print $1}')
   if [[ ! $battery_info =~ "discharging" ]]; then
-    battery_quantity="\U26a1 $battery_quantity"
+    battery_quantity="${HIGH_VOLTAGE} $battery_quantity"
   fi
 
   if [[ $battery_quantity -lt 16 ]]; then
