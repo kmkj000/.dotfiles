@@ -10,11 +10,13 @@ case "${TERM}" in
 esac
 
 # **env -----------------------------
+export PATH="${HOME}/.anyenv/bin:${PATH}"
+eval "$(anyenv init -)"
+
+# need after anyenv init
 if [ -n "${GOPATH}" ]; then
   export PATH=${GOPATH}/bin:${PATH}
 fi
-export PATH="${HOME}/.anyenv/bin:${PATH}"
-eval "$(anyenv init -)"
 
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
