@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 cd ~/.dotfiles
-git fetch
-git reset --hard origin/master
-./setup/deploy.sh
+function force_update() {
+  git fetch
+  git reset --hard origin/master
+  ./setup/deploy.sh
+}
+
+changed_files=$(git status --porcelain)
+
+if [ -z "${changed_files}" ]; then
+  force_update
+else
+  echo "${changed_files}"
+  while true; do
+    read -p "it's files changed, force update OK? [y/N]" answer
+    case ${answer} in
+      [Yy] )
+        force_update
+        break;
+        ;;
+      '' | [Nn] )
+        echo "Don't update"
+        break;
+        ;;
+      * )
+        echo Please answer y or n.
+    esac
+  done
+fi
+
