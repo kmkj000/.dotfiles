@@ -18,6 +18,20 @@ if [ -n "${GOPATH}" ]; then
   export PATH=${GOPATH}/bin:${PATH}
 fi
 
+# kubectl bash-completion ----------
+if type -a kubectl > /dev/null 2>&1; then
+  case "$(uname -a | awk '{print $1}')" in
+    "Darwin" )
+      if [ -d $(brew --prefix)/etc/bash_completion.d ] && [ -f $(brew --prefix)/etc/bash_completion.d/kubectl ]; then
+        kubectl completion bash > $(brew --prefix)/etc/bash_completion.d/kubectl
+      fi
+      ;;
+    "Linux" )
+      source <(kubectl completion bash)
+      ;;
+  esac
+fi
+
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
