@@ -22,7 +22,7 @@ fi
 if type -a kubectl > /dev/null 2>&1; then
   case "$(uname -a | awk '{print $1}')" in
     "Darwin" )
-      if [ -d $(brew --prefix)/etc/bash_completion.d ] && [ -f $(brew --prefix)/etc/bash_completion.d/kubectl ]; then
+      if [ -d $(brew --prefix)/etc/bash_completion.d ] && [ ! -f $(brew --prefix)/etc/bash_completion.d/kubectl ]; then
         kubectl completion bash > $(brew --prefix)/etc/bash_completion.d/kubectl
       fi
       ;;
@@ -30,6 +30,11 @@ if type -a kubectl > /dev/null 2>&1; then
       source <(kubectl completion bash)
       ;;
   esac
+fi
+
+# -mac bash-completion -------------
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # alias ----------------------------
