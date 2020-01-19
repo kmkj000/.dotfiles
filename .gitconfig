@@ -25,3 +25,4 @@
   statuss = status -uno
   # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
   difff = diff --word-diff
+

@@ -33,7 +33,7 @@ if type -a kubectl > /dev/null 2>&1; then
 fi
 
 # -mac bash-completion -------------
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
