@@ -90,7 +90,7 @@ __powerline() {
         #add user@host
         host="${COLOR_SUCCESS}[\u@\H]${RESET}"
 
-        PS1="\n$host$cwd$git\n$symbol"
+        PS1="\n$host$cwd$git$(kube_ps1)\n$symbol"
     }
 
     PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
