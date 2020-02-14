@@ -39,6 +39,23 @@ if type -a kubectl > /dev/null 2>&1; then
   esac
 fi
 
+# krew (kubernetes plugin manager) ---------
+# krew install
+if type -a kubectl git > /dev/null 2>&1 && [ ! -d ${HOME}/.krew ]; then
+  (
+    set -x; cd "$(mktemp -d)" &&
+    curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.4/krew.{tar.gz,yaml}" &&
+    tar zxvf krew.tar.gz &&
+    KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+    "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+    "$KREW" update
+  )
+fi
+# krew path
+if [ -d ${HOME}/.krew ]; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+fi
+
 # -mac bash-completion -------------
 if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
