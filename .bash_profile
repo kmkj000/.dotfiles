@@ -21,7 +21,8 @@ export PATH="${HOME}/.anyenv/bin:${PATH}"
 eval "$(anyenv init -)"
 
 # need after anyenv init
-if [ -n "${GOPATH}" ]; then
+if type go > /dev/null 2>&1; then
+  GOPATH=$(go env GOPATH)
   export PATH=${GOPATH}/bin:${PATH}
 fi
 
