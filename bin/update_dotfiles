@@ -3,6 +3,7 @@ cd ~/.dotfiles
 function force_update() {
   git fetch
   git reset --hard origin/master
+  git submodule foreach "git fetch; git reset --hard origin/master"
   ./setup/deploy.sh
 }
 
