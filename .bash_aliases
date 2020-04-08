@@ -39,3 +39,4 @@ fi
 # tmux ------------------------
 # color = 256
 alias tmux='tmux -2'
+
