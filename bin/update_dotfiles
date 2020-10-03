@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-cd ~/.dotfiles
+DOT_PATH="~/.dotfiles"
+cd ${DOT_PATH}
 function force_update() {
   git fetch
   git reset --hard origin/master
-  git submodule foreach "git fetch; git reset --hard origin/master"
-  ./setup/deploy.sh
+  # submodule update
+  git submodule update --init --recursive
+  ${DOT_PATH}/setup/deploy.sh
 }
 
 changed_files=$(git status --porcelain)
