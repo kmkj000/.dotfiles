@@ -68,9 +68,6 @@ set laststatus=2
 
 syntax on   "シンタックスカラーリングを設定する
 colorscheme dogrun
-let g:lightline={
-  \ 'colorscheme': 'dogrun',
-  \ }
 set background=dark
 set t_Co=256
 set number "行番号を表示する
