@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-DOT_PATH="~/.dotfiles"
+DOT_PATH="${HOME}/.dotfiles"
 cd ${DOT_PATH}
 function force_update() {
   git fetch
