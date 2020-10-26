@@ -1,6 +1,8 @@
 [submodule ".anyenv"]
 	path = .anyenv
-	url = https://github.com/riywo/anyenv
+  url = https://github.com/riywo/anyenv
+  ignore = dirty
 [submodule "etc/kube-ps1"]
 	path = etc/kube-ps1
-	url = https://github.com/jonmosco/kube-ps1.git
+  url = https://github.com/jonmosco/kube-ps1.git
+  ignore = dirty
