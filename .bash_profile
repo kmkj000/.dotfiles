@@ -57,10 +57,11 @@ if [ -d ${HOME}/.krew ]; then
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
 
-# -mac bash-completion -------------
+# bash-completion -------------
 if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
