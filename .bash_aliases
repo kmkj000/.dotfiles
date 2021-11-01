@@ -23,9 +23,8 @@ if [ ! `type tree > /dev/null 2>&1` ]; then
 fi
 
 # git -------------------------
-alias gitlog='git log --graph'
-alias gs='git status'
-alias grecommit='git commit --amend --no-edit'
+# remoteで削除されているbranchを削除する
+alias gitclean='branch --format "%(refname:short) %(upstream:track)" | grep "\[gone\]" | awk "{print $1}" | xargs -IXXX git branch -D XXX'
 
 # ruby ------------------------
 alias be='bundle exec'
