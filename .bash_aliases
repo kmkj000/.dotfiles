@@ -24,7 +24,7 @@ fi
 
 # git -------------------------
 # remoteで削除されているbranchを削除する
-alias gitclean='git branch --format "%(refname:short) %(upstream:track)" | grep "\[gone\]" | awk "{print $1}" | xargs -IXXX git branch -D XXX'
+alias gitclean='git branch --format "%(refname:short) %(upstream:track)" | grep "\[gone\]" | awk '\''{print $1}'\'' | xargs -IXXX git branch -D XXX'
 
 # vi --------------------------
 if type nvim > /dev/null 2>&1; then
