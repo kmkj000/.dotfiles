@@ -19,10 +19,14 @@
   ui = auto
 
 [alias]
+  # `git clone` コマンドに --recursive オプションを追加
+  clone = clone --recursive
   # いい感じのグラフでログを表示
   graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
   # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
   statuss = status -uno
+  # `git diff` コマンドを見やすくする
+  diff = diff --color-words
   # 行ごとの差分じゃなくて，単語レベルでの差分を色付きで表示する
   difff = diff --word-diff
   # commit messageなしで直前のコミットを再度コミットする
@@ -32,3 +36,6 @@
   # ユーザー情報
   path = ~/.gitconfig.user
 
+[user]
+	email = mail@putimaru.com
+	name = kmkj000
