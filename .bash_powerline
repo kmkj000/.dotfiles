@@ -95,6 +95,8 @@ __powerline() {
         #add user@host
         host="${COLOR_SUCCESS}[\u@\H]${RESET}"
 
+        source kube-ps1
+
         PS1="\n$host$cwd$git $(type kubectl >/dev/null 2>&1 && kube_ps1)\n[$(date '+%Y/%m/%d %H:%M:%S')]$symbol"
     }
 
