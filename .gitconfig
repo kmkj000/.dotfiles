@@ -36,6 +36,3 @@
   # ユーザー情報
   path = ~/.gitconfig.user
 
-[user]
-	email = mail@putimaru.com
-	name = kmkj000
