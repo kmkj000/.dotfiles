@@ -31,7 +31,6 @@
   difff = diff --word-diff
   # commit messageなしで直前のコミットを再度コミットする
   recommit = commit --amend --no-edit
-  unstage = reset HEAD
 
 [include]
   # ユーザー情報
