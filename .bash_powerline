@@ -15,17 +15,6 @@ __powerline() {
     readonly COLOR_CYAN='\[\033[0;36m\]' # cyan
     readonly COLOR_WHITE='\[\033[0;37m\]' # white
 
-    # Symbols
-    if [[ -z "$SYMBOL_GIT_BRANCH" ]]; then
-      case "$(uname)" in
-          Darwin)   SYMBOL_GIT_BRANCH='⑂';;
-          *)        SYMBOL_GIT_BRANCH='❱';;
-      esac
-    fi
-    SYMBOL_GIT_MODIFIED=${SYMBOL_GIT_MODIFIED:-*}
-    SYMBOL_GIT_PUSH=${SYMBOL_GIT_PUSH:-↑}
-    SYMBOL_GIT_PULL=${SYMBOL_GIT_PULL:-↓}
-
     if [[ -z "$PS_SYMBOL" ]]; then
       case "$(uname)" in
           Darwin)   PS_SYMBOL='';;
@@ -39,34 +28,53 @@ __powerline() {
         hash git 2>/dev/null || return # git not found
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
 
+        # Symbols
+        if [[ -z "$SYMBOL_GIT_BRANCH" ]]; then
+          case "$(uname)" in
+              Darwin)   SYMBOL_GIT_BRANCH='⑂';;
+              *)        SYMBOL_GIT_BRANCH='❱';;
+          esac
+        fi
+        SYMBOL_GIT_MODIFIED=${SYMBOL_GIT_MODIFIED:-*}
+        SYMBOL_GIT_PUSH=${SYMBOL_GIT_PUSH:-↑}
+        SYMBOL_GIT_PULL=${SYMBOL_GIT_PULL:-↓}
+
+        # addされていない変更を「*」commitされていない変更を「+」で示す
+        GIT_PS1_SHOWDIRTYSTATE=true
+        # addされていない新規ファイルの存在を「%」で示す
+        GIT_PS1_SHOWUNTRACKEDFILES=true
+        # stashがある場合は「$」で示す
+        GIT_PS1_SHOWSTASHSTATE=true
+        # upstreamと同期「=」進んでいる「>」遅れている「<」で示す
+        unset GIT_PS1_SHOWUPSTREAM
+        # ステートとrefの間を開けない
+        GIT_PS1_STATESEPARATOR=""
+
         # get current branch name
-        local ref=$($git_eng symbolic-ref --short HEAD 2>/dev/null)
+        local ref=$(__git_ps1 "%s")
 
         if [[ -n "$ref" ]]; then
             # prepend branch symbol
             ref=$SYMBOL_GIT_BRANCH$ref
         else
             # get tag name or short unique hash
-            ref=$($git_eng describe --tags --always 2>/dev/null)
+            ref=$SYMBOL_GIT_BRANCH$($git_eng describe --tags --always 2>/dev/null)
         fi
 
         [[ -n "$ref" ]] || return  # not a git repo
 
-        local marks
+        local upstream_diff
 
         # scan first two lines of output from `git status`
         while IFS= read -r line; do
             if [[ $line =~ ^## ]]; then # header line
-                [[ $line =~ ahead\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PUSH${BASH_REMATCH[1]}"
-                [[ $line =~ behind\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PULL${BASH_REMATCH[1]}"
-            else # branch is modified if output contains more lines after the header line
-                marks="$SYMBOL_GIT_MODIFIED$marks"
-                break
+                [[ $line =~ ahead\ ([0-9]+) ]] && upstream_diff+=" $SYMBOL_GIT_PUSH${BASH_REMATCH[1]}"
+                [[ $line =~ behind\ ([0-9]+) ]] && upstream_diff+=" $SYMBOL_GIT_PULL${BASH_REMATCH[1]}"
             fi
         done < <($git_eng status --porcelain --branch 2>/dev/null)  # note the space between the two <
 
         # print the git branch segment without a trailing newline
-        printf " $ref$marks"
+        printf "%s%s" " $ref$upstream_diff"
     }
 
     ps1() {
