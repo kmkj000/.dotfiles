@@ -52,12 +52,9 @@ __powerline() {
 
         # get current branch name
         local ref=$(__git_ps1 "%s")
-        if [[ -n "$ref" ]]; then
-            # prepend branch symbol
-            ref=$SYMBOL_GIT_BRANCH$ref
-        else
+        if [[ -z "$ref" ]]; then
             # get tag name or short unique hash
-            ref=$SYMBOL_GIT_BRANCH$($git_eng describe --tags --always 2>/dev/null)
+            ref=$($git_eng describe --tags --always 2>/dev/null)
         fi
         [[ -n "$ref" ]] || return  # not a git repo
 
@@ -71,7 +68,7 @@ __powerline() {
         done < <($git_eng status --porcelain --branch 2>/dev/null)  # note the space between the two <
 
         # print the git branch segment without a trailing newline
-        printf "%s%s" "$ref" "$upstream_diff"
+        printf "%s%s%s" "$SYMBOL_GIT_BRANCH" "$ref" "$upstream_diff"
     }
 
     function __git_color() {
