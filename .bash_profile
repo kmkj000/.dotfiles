@@ -1,5 +1,6 @@
 # valiable -------------------------
-export PATH="${HOME}/.dotfiles/bin:${PATH}"
+export DOTFILES_PATH="${HOME}/.dotfiles"
+export PATH="${DOTFILES_PATH}/bin:${PATH}"
 
 # fallback PS1
 export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;33m\][\d]\[\e[00m\]\[\e[1;33m\][\t]\[\e[00m\]\[\e[1;31m\][\w]\[\e[00m\]\n\$ "
