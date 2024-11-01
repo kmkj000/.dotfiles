@@ -18,7 +18,7 @@ set pumheight=10 " 補完メニューの高さ
 set wildmenu wildmode=list:full "補完機能を有効にする
 "ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc> 
-set smartcase " 検索文字列に大文字が含まれている場合は区別して検索する
+set ignorecase smartcase " 検索文字列に大文字が含まれている場合は区別して検索する
 set incsearch " 検索文字列入力時に順次対象文字列にヒットさせる
 " Y を、行末までのヤンクにする
 nmap Y y$
