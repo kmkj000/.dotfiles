@@ -36,3 +36,5 @@ fi
 # color = 256
 alias tmux='tmux -2'
 
+# kubernetes ------------------------
+alias kc='kubectl'

@@ -25,6 +25,11 @@ if type go > /dev/null 2>&1; then
   export PATH=${GOPATH}/bin:${PATH}
 fi
 
+# brew init
+if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # kubectl bash-completion ----------
 if type -a kubectl > /dev/null 2>&1; then
   case "$(uname -a | awk '{print $1}')" in
