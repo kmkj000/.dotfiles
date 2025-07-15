@@ -18,7 +18,6 @@ format = """$username\
 [username]
 show_always = true
 format = '[($user)]($style)@'
-style = 'orange'
 
 [hostname]
 ssh_only = false
