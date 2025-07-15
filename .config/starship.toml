@@ -1,0 +1,49 @@
+# エディターの補完を設定スキーマに合わせて取得
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# シェルのプロンプトの間に空行を挿入する
+add_newline = true
+
+format = """$username\
+  $hostname\
+  $directory\
+  $git_branch\
+  $git_commit\
+  $git_state\
+  $git_metrics\
+  $git_status\
+  $hg_branch\
+  $all"""
+
+[username]
+show_always = true
+format = '[($user)]($style)@'
+style = 'orange'
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol$hostname]($style) '
+style = 'green'
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+style = 'purple'
+format = '[\[$path\]]($style)[$read_only]($read_only_style) '
+
+[kubernetes]
+disabled = false
+symbol = '☸|'
+format = '[\($symbol$context:($namespace)\)]($style) '
+style = 'cyan'
+
+[git_branch]
+symbol = '⑂'
+style = 'red'
+format	= '[$symbol$branch(:$remote_branch)]($style) '
+
+[time]
+disabled = false
+style = ''
+format = '[\[$time\]]($style) '
+time_format = '%F %T'
