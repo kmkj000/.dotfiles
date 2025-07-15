@@ -2,19 +2,6 @@
 export DOTFILES_PATH="${HOME}/.dotfiles"
 export PATH="${DOTFILES_PATH}/bin:${PATH}"
 
-# fallback PS1
-export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;33m\][\d]\[\e[00m\]\[\e[1;33m\][\t]\[\e[00m\]\[\e[1;31m\][\w]\[\e[00m\]\n\$ "
-
-# Rich PS1
-if [ -f ~/.bash_powerline ]; then
-  source ~/.bash_powerline
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "${TERM}" in
-  xterm-color|*-256color) color_prompt=yes;;
-esac
-
 # **env -----------------------------
 export PATH="${HOME}/.anyenv/bin:${PATH}"
 eval "$(anyenv init -)"
@@ -24,6 +11,16 @@ if type go > /dev/null 2>&1; then
   export GOPATH=$(go env GOPATH)
   export PATH=${GOPATH}/bin:${PATH}
 fi
+
+if type -a /opt/homebrew/bin/brew > /dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# bash-completion -------------
+if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # kubectl bash-completion ----------
 if type -a kubectl > /dev/null 2>&1; then
@@ -56,11 +53,21 @@ if [ -d ${HOME}/.krew ]; then
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 fi
 
-# bash-completion -------------
-if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+## Visual --------------------------
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "${TERM}" in
+  xterm-color|*-256color) color_prompt=yes;;
+esac
+
+# fallback PS1
+export PS1="\[\e[1;32m\][\u@\H]\[\e[00m\]\[\e[1;34m\][bash:\V]\[\e[00m\]\[\e[1;33m\][\d]\[\e[00m\]\[\e[1;33m\][\t]\[\e[00m\]\[\e[1;31m\][\w]\[\e[00m\]\n\$ "
+
+# Rich PS1
+if type -a starship > /dev/null 2>&1; then
+  eval "$(starship init bash)"
+elif [ -f ~/.bash_powerline ]; then
+  source ~/.bash_powerline
 fi
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # alias ----------------------------
 if [ -f ~/.bash_aliases ]; then
