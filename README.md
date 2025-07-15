@@ -1,9 +1,11 @@
 # dotfiles
 ---
 
+
 ## ScreenShot  
+
 ### MacScreenShot  
-![mac_terminal_screenshot](https://user-images.githubusercontent.com/10633131/42027824-92084f74-7b05-11e8-8030-adf3fe7efb79.png)
+<img width="800" src="https://github.com/user-attachments/assets/1272da85-52ab-4794-be5d-4678c117eaba" />
 
 ## Overview  
 個人的な.file群を入れていこう
