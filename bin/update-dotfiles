@@ -9,7 +9,7 @@ function force_update() {
   ${DOT_PATH}/setup/deploy.sh
 }
 
-changed_files=$(git status --porcelain)
+changed_files=$(git status --untracked-files=no --porcelain)
 
 if [ -z "${changed_files}" ]; then
   force_update
@@ -31,4 +31,3 @@ else
     esac
   done
 fi
-
