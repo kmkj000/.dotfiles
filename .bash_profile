@@ -12,8 +12,13 @@ if type go > /dev/null 2>&1; then
   export PATH=${GOPATH}/bin:${PATH}
 fi
 
+# for mac brew
 if type -a /opt/homebrew/bin/brew > /dev/null 2>&1; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+# for linux brew
+if type -a /home/linuxbrew/.linuxbrew/bin/brew > /dev/null 2>&1; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # bash-completion -------------
