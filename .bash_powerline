@@ -50,6 +50,11 @@ __powerline() {
         # ステートとrefの間を開けない
         GIT_PS1_STATESEPARATOR=""
 
+        # __git_ps1 set
+        if ! $(type __git_ps1 > /dev/null 2>&1); then
+          source git-prompt.sh
+        fi
+
         # get current branch name
         local ref=$(__git_ps1 "%s")
         if [[ -z "$ref" ]]; then
