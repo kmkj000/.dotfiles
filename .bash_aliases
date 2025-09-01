@@ -36,3 +36,7 @@ fi
 # color = 256
 alias tmux='tmux -2'
 
+# node------------------------
+if $(type -a pnpm > /dev/null 2>&1); then
+  alias npm='pnpm'
+fi
