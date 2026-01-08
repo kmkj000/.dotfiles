@@ -21,6 +21,29 @@ if type -a /home/linuxbrew/.linuxbrew/bin/brew > /dev/null 2>&1; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# Docker コマンドのラッパー関数
+docker() {
+    local subcommand="$1"
+    shift  # サブコマンドを除去
+
+    case "$subcommand" in
+        attach|run|start|exec)
+            # --detach-keys が既に指定されていないか確認
+            if [[ "$*" != *"--detach-keys"* ]]; then
+                # デフォルトの detach-keys を付与
+                command docker "$subcommand" --detach-keys="ctrl-\\" "$@"
+            else
+                # 既に指定されている場合はそのまま実行
+                command docker "$subcommand" "$@"
+            fi
+            ;;
+        *)
+            # その他のコマンドはそのまま実行
+            command docker "$subcommand" "$@"
+            ;;
+    esac
+}
+
 # bash-completion -------------
 if type -a brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
